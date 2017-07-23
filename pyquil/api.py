@@ -204,8 +204,7 @@ class JobConnection(object):
         retry_adapter = HTTPAdapter(max_retries=Retry(total=num_retries,
                                                       method_whitelist=['POST'],
                                                       status_forcelist=[502, 503, 504, 521, 523],
-                                                      backoff_factor=0.2,
-                                                      raise_on_status=False))
+                                                      backoff_factor=0.2))
         self.session.mount("http://", retry_adapter)
         self.session.mount("https://", retry_adapter)
 
